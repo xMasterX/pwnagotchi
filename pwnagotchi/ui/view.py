@@ -4,7 +4,7 @@ import random
 import time
 from threading import Lock
 
-from PIL import ImageDraw
+from PIL import ImageDraw, ImageOps
 
 import pwnagotchi
 import pwnagotchi.plugins as plugins
@@ -378,6 +378,9 @@ class View(object):
 
                 for key, lv in state.items():
                     lv.draw(self._canvas, drawer)
+
+                if self._config['ui']['display']['invert']:
+                    self._canvas = ImageOps.invert(self._canvas.convert('L')).convert('1')
 
                 web.update_frame(self._canvas)
 

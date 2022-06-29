@@ -18,14 +18,14 @@ main.whitelist = [
 ]
 main.filter = ""
 
-main.plugins.grid.enabled = true
+main.plugins.grid.enabled = false
 main.plugins.grid.report = false
 main.plugins.grid.exclude = [
   "YourHomeNetworkHere"
 ]
 
-main.plugins.auto-update.enabled = true
-main.plugins.auto-update.install = true
+main.plugins.auto-update.enabled = false
+main.plugins.auto-update.install = false
 main.plugins.auto-update.interval = 1
 
 main.plugins.net-pos.enabled = false
@@ -200,6 +200,7 @@ ui.display.enabled = true
 ui.display.rotation = 180
 ui.display.type = "waveshare_2"
 ui.display.color = "black"
+ui.display.invert = false
 
 bettercap.scheme = "http"
 bettercap.hostname = "localhost"

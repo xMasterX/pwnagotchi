@@ -48,4 +48,4 @@ class Server:
 
             app.run(host=self._address, port=self._port, debug=False)
         else:
-            logging.info("could not get ip of usb0, video server not starting")
+            logging.info("could not get ip of eth0, video server not starting")

@@ -22,6 +22,7 @@ after all maybe you dont want very bright white background on that screen so add
 `ui.display.invert = true`
 to your config.toml
 
+[How to reduce power usage of RPi 3b](https://www.reddit.com/r/raspberry_pi/comments/aki1is/reducing_power_of_the_raspberry_pi_3_b/)
 # Pwnagotchi
 
 [Pwnagotchi](https://pwnagotchi.ai/) is an [A2C](https://hackernoon.com/intuitive-rl-intro-to-advantage-actor-critic-a2c-4ff545978752)-based "AI" leveraging [bettercap](https://www.bettercap.org/) that learns from its surrounding WiFi environment to maximize the crackable WPA key material it captures (either passively, or by performing authentication and association attacks). This material is collected as PCAP files containing any form of handshake supported by [hashcat](https://hashcat.net/hashcat/), including [PMKIDs](https://www.evilsocket.net/2019/02/13/Pwning-WiFi-networks-with-bettercap-and-the-PMKID-client-less-attack/), 

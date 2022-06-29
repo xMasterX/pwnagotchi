@@ -1,14 +1,28 @@
-# Pwnagotchi
+# What changed in this fork:
+* Updated raspbian image
+* Fixed image build
+* Removed usb0 network to fix RPi 3b support / (usb0 is always UP, so we are entering manual mode in any case)
+* [New display drivers](https://github.com/Artanovskaya/pwnagotchi) - `waveshare_3` & `waveshare35lcd`
+* New config parameter to invert display color - `ui.display.invert = true`
+* AI model loading fix
+* RPi 3b wifi channels/region fix
+* Other fixes
 
-<p align="center">
-    <a href="https://github.com/evilsocket/pwnagotchi/releases/latest"><img alt="Release" src="https://img.shields.io/github/release/evilsocket/pwnagotchi.svg?style=flat-square"></a>
-    <a href="https://github.com/evilsocket/pwnagotchi/blob/master/LICENSE.md"><img alt="Software License" src="https://img.shields.io/badge/license-GPL3-brightgreen.svg?style=flat-square"></a>
-    <a href="https://github.com/evilsocket/pwnagotchi/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/evilsocket/pwnagotchi"/></a>
-    <a href="https://travis-ci.org/evilsocket/pwnagotchi"><img alt="Travis" src="https://img.shields.io/travis/evilsocket/pwnagotchi/master.svg?style=flat-square"></a>
-    <a href="https://invite.pwnagotchi.ai/"><img alt="Slack" src="https://invite.pwnagotchi.ai/badge.svg"></a>
-    <a href="https://community.pwnagotchi.ai/"><img alt="Forum" src="https://img.shields.io/discourse/posts?server=https%3A%2F%2Fcommunity.pwnagotchi.ai%2F&style=flat-square"></a>
-    <a href="https://twitter.com/intent/follow?screen_name=pwnagotchi"><img src="https://img.shields.io/twitter/follow/pwnagotchi?style=social&logo=twitter" alt="follow on Twitter"></a>
-</p>
+P.S.
+After installing on RPi 3b or later connect to ssh and enter
+`rfkill unblock wifi`
+`rfkill unblock all`
+Also if you using LCD35 clones or waveshare 3.5 lcd
+you need to install [driver](https://www.waveshare.com/wiki/3.5inch_RPi_LCD_(A)#Method_1._Driver_installation) 
+- only clone a drivers repo and run `./LCD35-show lite` other steps are not needed / if you want to rotate screen `./LCD35-show lite 180`
+
+then add this line `echo 0 > /sys/class/graphics/fbcon/cursor_blink` into `/etc/rc.local`
+
+after all maybe you dont want very bright white background on that screen so add
+`ui.display.invert = true`
+to your config.toml
+
+# Pwnagotchi
 
 [Pwnagotchi](https://pwnagotchi.ai/) is an [A2C](https://hackernoon.com/intuitive-rl-intro-to-advantage-actor-critic-a2c-4ff545978752)-based "AI" leveraging [bettercap](https://www.bettercap.org/) that learns from its surrounding WiFi environment to maximize the crackable WPA key material it captures (either passively, or by performing authentication and association attacks). This material is collected as PCAP files containing any form of handshake supported by [hashcat](https://hashcat.net/hashcat/), including [PMKIDs](https://www.evilsocket.net/2019/02/13/Pwning-WiFi-networks-with-bettercap-and-the-PMKID-client-less-attack/), 
 full and half WPA handshakes.
